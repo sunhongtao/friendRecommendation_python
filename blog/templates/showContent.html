@@ -1,0 +1,98 @@
+{% load pagination_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>微博</title>
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	<style>
+        th{
+            text-align:center;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: auto;
+        }
+        td{
+        	width: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: auto;
+        
+        }
+        a:link {color: black  text-decoration:none;}    /* 未被访问的链接 */
+        a:visited {text-decoration:none;} /* 已被访问的链接 */
+        a:hover {text-decoration:underline;}   /* 鼠标指针移动到链接上 */
+        a:active {text-decoration:underline;}  /* 正在被点击的链接 */
+body{
+    background: #ebebeb;
+    
+    font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+    color: #222;
+    font-size: 15px;
+}
+
+.left_hand{
+    background: url("/collected_static/2000.png") no-repeat;
+    width: 32px;
+    height: 37px;
+    position: absolute;
+    top: -38px;
+    left: 150px;
+}
+
+    </style>
+</head>
+<body >
+
+    <div>
+        <div class="container-fluid">
+            <div class="navbar-header">
+           <h2 id="left_hand">微博内容模块</h2>
+           
+            <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
+                <!-- <a class="navbar-brand" href="/Admin/index.html" id="logo">访问控制系统</a> -->
+		<!-- 		<a class="navbar-brand" id="logo">微博内容模块</a> -->
+            </div>
+        </div>
+    </div>
+    
+<div style="padding: 90px 10px 5px;">
+   <form class="bs-example bs-example-form" method="GET" role="form">
+      <div class="row">
+         <div class="col-lg-2">
+            <div class="input-group">
+               <input type="text" name="id"  placeholder="请输入用户ID"  class="form-control">
+               <span class="input-group-btn">
+                    <input type="submit" style="color: #ffffff" class="btn btn-success" value="Search"/>
+               </span>
+            </div><!-- /input-group -->
+         </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+   </form>
+</div>
+
+{% if userinfo %}
+	{% autopaginate userinfo 6 %}
+	<table class="table table-condensed table-hover table-bordered" width="50%" >
+	     <thead>
+        <tr>
+            <th>用户名</th>
+            <th>发表时间</th>
+            <th>内容</th>
+        </tr>
+        </thead>
+		{% for todo in userinfo %}
+			<tr>
+				<td>{{ todo.userid }}</td>
+				<td>{{ todo.date }}</td>
+				<td>{{ todo.content }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	{% paginate %}
+{% endif %}
+</body>
+</html>

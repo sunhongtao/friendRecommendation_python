@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link
+	href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+#main-nav {
+	margin-left: 1px;
+}
+
+#main-nav.nav-tabs.nav-stacked>li>a {
+	padding: 10px 8px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #4A515B;
+	background: #E9E9E9;
+	background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FAFAFA),
+		color-stop(100%, #E9E9E9));
+	background: -webkit-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+	background: -o-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+	background: -ms-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+	background: linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA',
+		endColorstr='#E9E9E9');
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')";
+	border: 1px solid #D5D5D5;
+	border-radius: 4px;
+}
+
+#main-nav.nav-tabs.nav-stacked>li>a>span {
+	color: #4A515B;
+}
+
+#main-nav.nav-tabs.nav-stacked>li.active>a, #main-nav.nav-tabs.nav-stacked>li>a:hover
+	{
+	color: #FFF;
+	background: #3C4049;
+	background: -moz-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4A515B),
+		color-stop(100%, #3C4049));
+	background: -webkit-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+	background: -o-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+	background: -ms-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+	background: linear-gradient(top, #4A515B 0%, #3C4049 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B',
+		endColorstr='#3C4049');
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B', endColorstr='#3C4049')";
+	border-color: #2B2E33;
+}
+
+#main-nav.nav-tabs.nav-stacked>li.active>a, #main-nav.nav-tabs.nav-stacked>li>a:hover>span
+	{
+	color: #FFF;
+}
+
+#main-nav.nav-tabs.nav-stacked>li {
+	margin-bottom: 4px;
+}
+
+/*定义二级菜单样式*/
+.secondmenu a {
+	font-size: 10px;
+	color: #4A515B;
+	text-align: center;
+}
+
+.thirdmenu a {
+	font-size: 8px;
+	color: #673ab7;
+	text-align: center;
+}
+
+.navbar-static-top {
+	background-color: #212121;
+	margin-bottom: 5px;
+}
+
+.navbar-brand {
+	background: url('') no-repeat 10px 8px;
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 50px;
+	color: #fff;
+}
+
+div.col-sm-9 div {
+	height: 250px;
+	font-size: 28px;
+}
+
+#section1 {
+	color: #fff;
+	background-color: #1E88E5;
+}
+
+#section2 {
+	color: #fff;
+	background-color: #673ab7;
+}
+
+#section3 {
+	color: #fff;
+	background-color: #ff9800;
+}
+
+#section41 {
+	color: #fff;
+	background-color: #00bcd4;
+}
+
+#section42 {
+	color: #fff;
+	background-color: #009688;
+}
+
+@media screen and (max-width: 810px) {
+	#section1, #section2, #section3, #section41, #section42 {
+		margin-left: 150px;
+	}
+}
+</style>
+</head>
+
+<body>
+	<div class="navbar-header">
+		<!-- <a class="navbar-brand" style="font-size-adjust: inherit"  href="/Admin/index.html" id="logo">访问控制系统</a> -->
+		<h3 style="text-align: left">推荐模块</h3>
+<!-- 		<hr
+			style="height: 10px; border: none; border-top: 10px groove skyblue;" /> -->
+	</div>
+	<form class="bs-example bs-example-form" method="POST" role="form">
+		<div class="row">
+			<div class="col-lg-2">
+				<div class="input-group">
+					<input type="text" name="date1" placeholder="请输入时间" class="form-control"> 
+					<span class="input-group-btn">
+						<input type="submit" style="color: #ffffff" class="btn btn-primary" value="推荐" /> 
+					</span>
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	<table class="table">
+   <thead>
+      <tr>
+         <th>uid</th>
+         <th>rank</th>
+      </tr>
+   </thead>
+   {% for info in recommendlist %}
+   <tbody>
+      <tr>
+         <td>{{ info.0 }}</td>
+         <td>{{ info.1 }}</td>
+      </tr>
+   </tbody>
+   {% endfor %}
+</table>
+		
+	<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script
+		src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script>
+    </script>
+</body>
+</html>

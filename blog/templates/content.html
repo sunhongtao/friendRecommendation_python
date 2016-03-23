@@ -1,0 +1,97 @@
+{% load pagination_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>微博</title>
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	<style>
+        th{
+            text-align:center;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: auto;
+        }
+        td{
+        	width: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: auto;
+        
+        }
+        a:link {color: black  text-decoration:none;}    /* 未被访问的链接 */
+        a:visited {text-decoration:none;} /* 已被访问的链接 */
+        a:hover {text-decoration:underline;}   /* 鼠标指针移动到链接上 */
+        a:active {text-decoration:underline;}  /* 正在被点击的链接 */
+body{
+    background: #ebebeb;
+    font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+    color: #222;
+    font-size: 15px;
+}
+    </style>
+</head>
+
+<body>
+
+<div class="navbar navbar-duomi navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1>好友推荐系统</h1>
+            </div>
+            <div>
+                <form class="navbar-form navbar-right form-horizontal" role="status">
+                    <h3><span class="label label-default" style="text-align: left;">{{ uid }}</span>
+                        <a href="/" class="btn btn-default" target="_parent">注销</a>
+                        <a href="/" class="btn btn-primary" target="_parent" >退出</a>
+                    </h3>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<div style="padding: 80px 10px 5px;">
+   <form class="bs-example bs-example-form" method="POST" role="form">
+      <div class="row">
+         <div class="col-lg-2">
+            <div class="input-group">
+               <input type="text" name="q" class="form-control">
+               <span class="input-group-btn">
+                    <!-- <a style="color: #ffffff" class="btn btn-success">Search</a> -->
+                    <input type="submit" style="color: #ffffff" class="btn btn-success" value="Search"/>
+<!-- 					<button class="btn btn-default" type="button">
+                     Go!
+                  	</button> -->
+               
+               </span>
+            </div><!-- /input-group -->
+         </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+   </form>
+</div>
+
+{% if userinfo %}
+	{% autopaginate userinfo 10 %}
+	<table class="table table-condensed table-hover table-bordered" width="50%" >
+	     <thead>
+        <tr>
+            <th>用户名</th>
+            <th>发表时间</th>
+            <th>内容</th>
+        </tr>
+        </thead>
+		{% for todo in userinfo %}
+			<tr>
+				<td>{{ todo.userid }}</td>
+				<td>{{ todo.date }}</td>
+				<td>{{ todo.content }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	{% paginate %}
+{% endif %}
+</body>
+</html>

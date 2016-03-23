@@ -1,0 +1,70 @@
+{% load pagination_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>微博</title>
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	<style>
+        th,td{
+            text-align:center;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: auto;
+        }
+        a:link {color: black  text-decoration:none;}    /* 未被访问的链接 */
+        a:visited {text-decoration:none;} /* 已被访问的链接 */
+        a:hover {text-decoration:underline;}   /* 鼠标指针移动到链接上 */
+        a:active {text-decoration:underline;}  /* 正在被点击的链接 */
+body{
+    background: #ebebeb;
+    font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+    color: #222;
+    font-size: 18px;
+}
+    </style>
+</head>
+
+<body>
+{% if userinfo %}
+	{% autopaginate 5 userinfo %}
+    <table class="table table-condensed table-hover table-bordered" width="70%"  >
+        <thead>
+        <tr>
+            <th>用户名</th>
+            <th>发表时间</th>
+            <th>内容</th>
+        </tr>
+        </thead>
+        {% for d in userinfo %}
+               
+            <tbody>
+            <tr>
+                <td>
+                    {{ d.userid }}
+                </td>
+                <td>
+                    {{ d.date }}
+                </td>
+                <td>
+                    {{ d.content }}
+                </td>
+                <td>
+                    {{ user.3 }}
+                </td>
+			<!-- 	<td><a style="color: #ffffff" class="btn btn-success"
+					href="/adduser.html">添加</a> <a style="color: #ffffff"
+					class="btn btn-danger" href="/deleteuser?id={{ user.0 }}">删除</a> <a
+					style="color: #ffffff" class="btn btn-primary"
+					href="/showuid?id={{ user.0 }}">更新</a></td> -->
+			</tr>
+            <tbody>
+		{% endfor %}
+    </table>
+	{% paginate %}
+{% endif %}
+</body>
+</html>
